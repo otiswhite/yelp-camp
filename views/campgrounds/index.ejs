@@ -1,0 +1,45 @@
+<!-- using ejsmate inject boilerplate -->
+<% layout("layouts/boilerplate") %>
+
+<!-- cluster map -->
+<div crossorigin="anonymous" id="cluster-map"></div>
+
+<h1 class="">All Campgrounds</h1>
+
+<div class="">
+	<a href="/campgrounds/new">Add Campground</a>
+</div>
+
+<% for (let campground of campgrounds) { %>
+<div class="card mb-3 mh-400">
+	<div class="row">
+		<div class="col-md-4">
+			<img
+				src="<%= campground.images[0].url %>"
+				class="img-fluid rounded-start"
+				crossorigin="anonymous"
+				alt="..."
+			/>
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+				<h5 class="card-title"><%= campground.title %></h5>
+				<h6 class="text-muted"><%= campground.location %></h6>
+				<p class="card-text"><%= campground.blurb %></p>
+				<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary"
+					>View</a
+				>
+			</div>
+		</div>
+	</div>
+</div>
+<% } %>
+
+<!-- script to get mapbox token from .env file -->
+<script>
+	const mapboxToken = "<%- process.env.MAPBOX_TOKEN %>";
+	// we need to put data in object, under key features to comfort to mapbox cluster map standard
+	const campgrounds = { features: <%- JSON.stringify(campgrounds) %>};
+</script>
+<!-- publuc js -->
+<script src="javascripts/clusterMap.js"></script>

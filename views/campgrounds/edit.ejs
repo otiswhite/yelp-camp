@@ -1,0 +1,132 @@
+<!-- using ejsmate inject boilerplate-->
+<% layout("layouts/boilerplate") %>
+
+<div class="row">
+	<h1 class="text-center">Edit Campground</h1>
+	<div class="col-lg-6 offset-lg-3">
+		<form
+			action="/campgrounds/<%= campground._id %>?_method=PUT"
+			method="POST"
+			class="validated-form"
+			novalidate
+			enctype="multipart/form-data"
+		>
+			<div class="mb-3">
+				<label class="form-label" for="title">Title</label>
+				<input
+					class="form-control"
+					type="text"
+					name="campground[title]"
+					id="title"
+					value="<%= campground.title %>"
+					required
+				/>
+				<!-- bootstrap client-side custom validation feedback message -->
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Please choose a title</div>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="location">Location</label>
+				<input
+					class="form-control"
+					type="text"
+					name="campground[location]"
+					id="location"
+					value="<%= campground.location %>"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Please provide a location</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="price">Campground Price</label>
+				<div class="input-group">
+					<span class="input-group-text" id="price">$</span>
+					<input
+						id="input-price-edit"
+						type="number"
+						step="0.01"
+						min="0"
+						class="form-control"
+						value="<%= campground.price %>"
+						name="campground[price]"
+						aria-label="price"
+						aria-describedby="price"
+						required
+					/>
+					<div class="valid-feedback">Looks good!</div>
+					<div class="invalid-feedback">Please choose a price</div>
+				</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="blurb">Description</label>
+				<textarea
+					class="form-control"
+					type="text"
+					name="campground[blurb]"
+					id="blurb"
+					required
+				>
+<%= campground.blurb %></textarea
+				>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Please write a description</div>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="">Add More Images</label>
+				<div class="input-group mb-3">
+					<input
+						type="file"
+						class="form-control"
+						name="image"
+						id="image"
+						multiple
+					/>
+				</div>
+				<!-- <label class="form-label" for="image">Add Images</label>
+				<input type="file" name="image" id="image" multiple /> -->
+				<!-- <input
+					class="form-control"
+					type="text"
+					name="campground[image]"
+					id="image"
+					value="<%= campground.image %>"
+					required
+				/> -->
+				<!-- <div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Please provide a image url</div> -->
+			</div>
+			<!-- show all the images thumbnail (virtual property on the model) on the camground and show checkbox for deletion -->
+			<div class="form-label text-danger">Delete Images</div>
+			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-3">
+				<% campground.images.forEach((image, i) => { %>
+				<div class="col">
+					<div class="card">
+						<label for="image-<%= i %>"
+							><img class="card-img" src="<%= image.thumbnail %>" alt="" />
+							<div class="card-img-overlay text-end pt-1 pe-2">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="deleteImages[]"
+									value="<%= image.filename %>"
+									id="image-<%= i %>"
+								/>
+							</div>
+						</label>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+
+			<div class="mb-3">
+				<button class="btn btn-info text-light">Update Campground</button>
+			</div>
+		</form>
+		<div class="mb-3">
+			<a href="/campgrounds/<%= campground._id %>">Back to Campground</a>
+		</div>
+	</div>
+</div>
