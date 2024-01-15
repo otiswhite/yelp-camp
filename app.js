@@ -42,7 +42,7 @@ const reviewRoutes = require("./routes/reviews");
 
 // database local or hosted on atlas in production
 // mongodb atlas (production) process.env.DB_URL OR local "mongodb://localhost:27017/yelp_camp_3"
-dbUrl = "mongodb://localhost:27017/yelp_camp_3";
+dbUrl = process.env.DB_URL;
 
 mongoose.connect(dbUrl);
 
@@ -214,6 +214,7 @@ app.use((err, req, res, next) => {
 });
 
 // start router
-app.listen(3000, () => {
-	console.log("Serving on port 3000");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+	console.log(`Serving on port ${port}`);
 });
