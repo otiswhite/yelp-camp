@@ -147,7 +147,6 @@ app.use(
 				"blob:",
 				"data:",
 				`https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/`, //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
-				"https://res.cloudinary.com/dtscswp2k/image/upload/v1705497933/YelpCamp%20Seeds%20Images/", //SEEDS IMAGES
 				"https://images.unsplash.com/",
 			],
 			fontSrc: ["'self'", ...fontSrcUrls],
