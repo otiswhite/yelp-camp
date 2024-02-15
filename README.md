@@ -1,6 +1,6 @@
 # YelpCamp Website
 
-This is a final project from The Web Development Bootcamt at [Udemy](https://www.udemy.com/course/the-web-developer-bootcamp/) by Colt Steele. The course goes through full stack development process including HTML, CSS, JS, EJS, Node, Express, MongoDB. The app is a version of a rating website where users can post campsites and review them. The functionality includes, register and login users, creating, editing and deleting campgrounds, leaving reviews with star rating and map feature. Additionally 3rd party API services were integrated using images from [Unspash](Unspash.com) and maps, including cluster map, from [mapbox](mapbox.com).
+This is a final project from The Web Development Bootcamt at [Udemy](https://www.udemy.com/course/the-web-developer-bootcamp/) by Colt Steele. The course goes through full stack development process including HTML, CSS, JS, EJS, Node, Express, MongoDB. The app is a version of a rating website where users can post campsites and review them. The functionality includes, register and login users, creating, editing and deleting campgrounds, leaving reviews with star rating and map feature. Additionally 3rd party API services were integrated using images from [Unspash](https://unspash.com) and maps, including cluster map, from [mapbox](https://www.mapbox.com).
 
 [YelpCamp website](https://yelp-camp-hn4d.onrender.com)
 
